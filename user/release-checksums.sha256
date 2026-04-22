@@ -1,0 +1,10 @@
+05e6df66c2d9366a92a5151c4ff2157467d41c7a9a3dd10182599fb16f196252  ./quick-install.sh
+26162181b1bee8d4083185003934276db50bfc3b5d2e5e3a2c3f2d36fd6f0c44  ./scripts/unmount-aidrive.sh
+3be8cb7dcbe3ee23ad110206de1e6b4764702bacecc79ccf990beaaced0c5b54  ./scripts/check-environment.sh
+40c5f2a28a38c1c16b786a608ff525e513b02b035f5065f6daffc5b17d28bceb  ./scripts/install-aidrive-fuse.sh
+7a7943bac3cf2e14984f18f6a49dfbabf169906b706d76385d405eda1a9792c5  ./genspark_aidrive_sdk-0.1.1-py3-none-any.whl
+a48857b2b18fd2845b6662d28a1f33eff0648219c917062e3cd3ddf0f3d42922  ./scripts/check-libfuse.sh
+bfadcbf0d2106769c6edae1f2a9ccd9b40ae2b757ba2f451b2385c2a41487635  ./aidrive_fuse-1.0.17-py3-none-any.whl
+c00def881e6dea672bdc5b9e44ba9fc547f99dd6c7fc7312c550edfd394bb089  ./scripts/mount-aidrive-async.sh
+ca130a72789feaf637692fcef02928f57d3d3c983e2e76e1900471dd7bfb5f39  ./scripts/mount-aidrive.sh
+df0da46a3abb437a945b93f4b0289e27b01c5dabca6c5fdb332774d8197a8ed6  ./aidrive_fuse-1.0.17.tar.gz

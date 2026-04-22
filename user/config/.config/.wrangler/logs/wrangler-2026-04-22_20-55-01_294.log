@@ -1,0 +1,299 @@
+
+--- 2026-04-22T20:55:01.750Z debug
+🪵  Writing logs to "/home/user/.config/.wrangler/logs/wrangler-2026-04-22_20-55-01_294.log"
+---
+
+--- 2026-04-22T20:55:01.750Z debug
+.env file not found at "/home/user/webapp/.env". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---
+
+--- 2026-04-22T20:55:01.751Z debug
+.env file not found at "/home/user/webapp/.env.local". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---
+
+--- 2026-04-22T20:55:02.384Z log
+
+ ⛅️ wrangler 4.82.2 (update available 4.84.1)
+─────────────────────────────────────────────
+---
+
+--- 2026-04-22T20:55:02.388Z debug
+Metrics dispatcher: Posting data {"deviceId":"e7f94202-91ab-487c-a1a5-b71ae354e5c8","event":"wrangler command started","timestamp":1776891302388,"properties":{"amplitude_session_id":1776891302386,"amplitude_event_id":0,"wranglerVersion":"4.82.2","wranglerMajorVersion":4,"wranglerMinorVersion":82,"wranglerPatchVersion":2,"osPlatform":"Linux","osVersion":"#1 SMP PREEMPT_DYNAMIC Thu May 29 17:08:06 CST 2025","nodeVersion":20,"packageManager":"npm","isFirstUsage":true,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":false,"hasAssets":false,"agent":null,"argsUsed":["ip","port"],"argsCombination":"ip, port","sanitizedCommand":"pages dev","sanitizedArgs":{}}}
+---
+
+--- 2026-04-22T20:55:02.643Z log
+✨ Compiled Worker successfully
+---
+
+--- 2026-04-22T20:55:03.018Z debug
+setting config
+---
+
+--- 2026-04-22T20:55:03.019Z debug
+Updating config... undefined undefined
+---
+
+--- 2026-04-22T20:55:03.025Z debug
+local dev variables file not found at ".dev.vars". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---
+
+--- 2026-04-22T20:55:03.025Z debug
+.env file not found at "/home/user/webapp/.env". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---
+
+--- 2026-04-22T20:55:03.025Z debug
+.env file not found at "/home/user/webapp/.env.local". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---
+
+--- 2026-04-22T20:55:03.027Z log
+Your Worker has access to the following bindings:
+---
+
+--- 2026-04-22T20:55:03.027Z log
+Binding                                                                   Resource                  Mode
+---
+
+--- 2026-04-22T20:55:03.028Z log
+env.CF_PAGES ("1")                                                        Environment Variable      local
+---
+
+--- 2026-04-22T20:55:03.028Z log
+env.CF_PAGES_BRANCH ("main")                                              Environment Variable      local
+---
+
+--- 2026-04-22T20:55:03.029Z log
+env.CF_PAGES_COMMIT_SHA ("8ea14cdd8a25ead718a4558b82b7f5e8f21e1...")      Environment Variable      local
+---
+
+--- 2026-04-22T20:55:03.029Z log
+env.CF_PAGES_URL ("https://8ea14cd.webapp.pages.dev")                     Environment Variable      local
+---
+
+--- 2026-04-22T20:55:03.030Z log
+
+---
+
+--- 2026-04-22T20:55:03.046Z debug
+Metrics dispatcher: Posting data {"deviceId":"e7f94202-91ab-487c-a1a5-b71ae354e5c8","event":"run pages dev","timestamp":1776891303046,"properties":{"amplitude_session_id":1776891303045,"amplitude_event_id":0,"wranglerVersion":"4.82.2","wranglerMajorVersion":4,"wranglerMinorVersion":82,"wranglerPatchVersion":2,"osPlatform":"Linux","osVersion":"#1 SMP PREEMPT_DYNAMIC Thu May 29 17:08:06 CST 2025","nodeVersion":20,"packageManager":"npm","isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":false,"hasAssets":false,"agent":null,"category":"Workers","os":"linux:x64"}}
+---
+
+--- 2026-04-22T20:55:03.117Z debug
+RemoteRuntimeController teardown beginning...
+---
+
+--- 2026-04-22T20:55:03.117Z debug
+RemoteRuntimeController teardown complete
+---
+
+--- 2026-04-22T20:55:03.133Z log
+⎔ Starting local server...
+---
+
+--- 2026-04-22T20:55:03.364Z debug
+[InspectorProxyWorker] handleProxyControllerIncomingMessage {"type":"reloadStart"}
+---
+
+--- 2026-04-22T20:55:03.698Z debug
+[InspectorProxyWorker] handleProxyControllerIncomingMessage {"type":"reloadComplete","proxyData":{"userWorkerUrl":{"protocol":"http:","hostname":"127.0.0.1","port":"44683"},"userWorkerInspectorUrl":{"protocol":"ws:","hostname":"127.0.0.1","port":"46229","pathname":"/core:user:webapp"},"userWorkerInnerUrlOverrides":{"protocol":"http:"},"headers":{"MF-Proxy-Shared-Secret":"2bac19f3-5059-41ba-b418-34dc2a1f6ebf"},"liveReload":false,"proxyLogsToController":false}}
+---
+
+--- 2026-04-22T20:55:03.699Z debug
+[InspectorProxyWorker] reconnectRuntimeWebSocket
+---
+
+--- 2026-04-22T20:55:03.701Z debug
+[InspectorProxyWorker] NEW RUNTIME WEBSOCKET http://127.0.0.1:46229/core:user:webapp
+---
+
+--- 2026-04-22T20:55:03.711Z debug
+[InspectorProxyWorker] SEND TO DEVTOOLS {"method":"Runtime.executionContextsCleared"}
+---
+
+--- 2026-04-22T20:55:03.717Z debug
+[InspectorProxyWorker] RUNTIME INCOMING MESSAGE {
+  method: 'Runtime.executionContextCreated',
+  params: {
+    context: {
+      id: 414690465,
+      origin: '',
+      name: 'Worker',
+      uniqueId: '-6414617825123224383.-2887645561715295147'
+    }
+  }
+}
+---
+
+--- 2026-04-22T20:55:03.718Z debug
+[InspectorProxyWorker] RUNTIME INCOMING MESSAGE { id: 100000001, result: {} }
+---
+
+--- 2026-04-22T20:55:03.719Z debug
+[InspectorProxyWorker] RUNTIME INCOMING MESSAGE { id: 100000002, method: 'Network.enable', result: {} }
+---
+
+--- 2026-04-22T20:55:03.720Z debug
+[InspectorProxyWorker] RUNTIME WEBSOCKET OPENED
+---
+
+--- 2026-04-22T20:55:03.723Z debug
+[InspectorProxyWorker] SEND TO RUNTIME {"method":"Runtime.enable","id":100000001}
+---
+
+--- 2026-04-22T20:55:03.724Z debug
+[InspectorProxyWorker] SEND TO RUNTIME {"method":"Network.enable","id":100000002}
+---
+
+--- 2026-04-22T20:55:13.701Z debug
+[InspectorProxyWorker] SEND TO RUNTIME {"method":"Runtime.getIsolateId","id":100000003}
+---
+
+--- 2026-04-22T20:55:13.704Z debug
+[InspectorProxyWorker] RUNTIME INCOMING MESSAGE { id: 100000003, result: { id: 'f4772f295cfdcbb1' } }
+---
+
+--- 2026-04-22T20:55:23.702Z debug
+[InspectorProxyWorker] SEND TO RUNTIME {"method":"Runtime.getIsolateId","id":100000004}
+---
+
+--- 2026-04-22T20:55:23.705Z debug
+[InspectorProxyWorker] RUNTIME INCOMING MESSAGE { id: 100000004, result: { id: 'f4772f295cfdcbb1' } }
+---
+
+--- 2026-04-22T20:55:31.739Z debug
+[InspectorProxyWorker] RUNTIME INCOMING MESSAGE {
+  method: 'Runtime.consoleAPICalled',
+  params: {
+    type: 'error',
+    args: [ [Object] ],
+    executionContextId: 414690465,
+    timestamp: 1776891331733,
+    stackTrace: { callFrames: [Array] }
+  }
+}
+---
+
+--- 2026-04-22T20:55:31.901Z error
+✘ [ERROR] Error: Context is not finalized. Did you forget to return a Response object or `await next()`?
+
+      at null.<anonymous> (file:///home/user/webapp/dist/_worker.js:1:13497)
+      at async jsonError (file:///home/user/webapp/node_modules/wrangler/templates/middleware/middleware-miniflare3-json-error.ts:22:10)
+      at async drainBody (file:///home/user/webapp/node_modules/wrangler/templates/middleware/middleware-ensure-req-body-drained.ts:5:10)
+      at async jsonError (file:///home/user/webapp/node_modules/wrangler/templates/middleware/middleware-miniflare3-json-error.ts:22:10)
+      at async drainBody (file:///home/user/webapp/node_modules/wrangler/templates/middleware/middleware-ensure-req-body-drained.ts:5:10)
+
+
+---
+
+--- 2026-04-22T20:55:33.703Z debug
+[InspectorProxyWorker] SEND TO RUNTIME {"method":"Runtime.getIsolateId","id":100000005}
+---
+
+--- 2026-04-22T20:55:33.705Z debug
+[InspectorProxyWorker] RUNTIME INCOMING MESSAGE { id: 100000005, result: { id: 'f4772f295cfdcbb1' } }
+---
+
+--- 2026-04-22T20:55:43.705Z debug
+[InspectorProxyWorker] SEND TO RUNTIME {"method":"Runtime.getIsolateId","id":100000006}
+---
+
+--- 2026-04-22T20:55:43.708Z debug
+[InspectorProxyWorker] RUNTIME INCOMING MESSAGE { id: 100000006, result: { id: 'f4772f295cfdcbb1' } }
+---
+
+--- 2026-04-22T20:55:53.705Z debug
+[InspectorProxyWorker] SEND TO RUNTIME {"method":"Runtime.getIsolateId","id":100000007}
+---
+
+--- 2026-04-22T20:55:53.708Z debug
+[InspectorProxyWorker] RUNTIME INCOMING MESSAGE { id: 100000007, result: { id: 'f4772f295cfdcbb1' } }
+---
+
+--- 2026-04-22T20:55:57.837Z debug
+🌀 "change" event detected at /home/user/webapp/dist/_worker.js.
+---
+
+--- 2026-04-22T20:55:57.990Z log
+✨ Compiled Worker successfully
+---
+
+--- 2026-04-22T20:55:58.134Z debug
+RemoteRuntimeController teardown beginning...
+---
+
+--- 2026-04-22T20:55:58.134Z debug
+RemoteRuntimeController teardown complete
+---
+
+--- 2026-04-22T20:55:58.139Z log
+⎔ Reloading local server...
+---
+
+--- 2026-04-22T20:55:58.150Z debug
+[InspectorProxyWorker] handleProxyControllerIncomingMessage {"type":"reloadStart"}
+---
+
+--- 2026-04-22T20:55:58.152Z debug
+[InspectorProxyWorker] SEND TO RUNTIME {"method":"Runtime.discardConsoleEntries","id":100000008}
+---
+
+--- 2026-04-22T20:55:58.156Z debug
+[InspectorProxyWorker] RUNTIME INCOMING MESSAGE { id: 100000008, result: {} }
+---
+
+--- 2026-04-22T20:55:58.235Z debug
+[InspectorProxyWorker] RUNTIME WEBSOCKET CLOSED 1006 WebSocket disconnected without sending Close frame.
+---
+
+--- 2026-04-22T20:55:58.366Z log
+⎔ Local server updated and ready
+---
+
+--- 2026-04-22T20:55:58.374Z debug
+[InspectorProxyWorker] handleProxyControllerIncomingMessage {"type":"reloadComplete","proxyData":{"userWorkerUrl":{"protocol":"http:","hostname":"127.0.0.1","port":"40531"},"userWorkerInspectorUrl":{"protocol":"ws:","hostname":"127.0.0.1","port":"46229","pathname":"/core:user:webapp"},"userWorkerInnerUrlOverrides":{"protocol":"http:"},"headers":{"MF-Proxy-Shared-Secret":"2bac19f3-5059-41ba-b418-34dc2a1f6ebf"},"liveReload":false,"proxyLogsToController":false}}
+---
+
+--- 2026-04-22T20:55:58.375Z debug
+[InspectorProxyWorker] reconnectRuntimeWebSocket
+---
+
+--- 2026-04-22T20:55:58.375Z debug
+[InspectorProxyWorker] NEW RUNTIME WEBSOCKET http://127.0.0.1:46229/core:user:webapp
+---
+
+--- 2026-04-22T20:55:58.377Z debug
+[InspectorProxyWorker] SEND TO DEVTOOLS {"method":"Runtime.executionContextsCleared"}
+---
+
+--- 2026-04-22T20:55:58.377Z debug
+[InspectorProxyWorker] RUNTIME WEBSOCKET OPENED
+---
+
+--- 2026-04-22T20:55:58.378Z debug
+[InspectorProxyWorker] SEND TO RUNTIME {"method":"Runtime.enable","id":100000009}
+---
+
+--- 2026-04-22T20:55:58.379Z debug
+[InspectorProxyWorker] SEND TO RUNTIME {"method":"Network.enable","id":100000010}
+---
+
+--- 2026-04-22T20:55:58.380Z debug
+[InspectorProxyWorker] RUNTIME INCOMING MESSAGE {
+  method: 'Runtime.executionContextCreated',
+  params: {
+    context: {
+      id: 108434369,
+      origin: '',
+      name: 'Worker',
+      uniqueId: '7229933575411800760.-3005431491528025490'
+    }
+  }
+}
+---
+
+--- 2026-04-22T20:55:58.383Z debug
+[InspectorProxyWorker] RUNTIME INCOMING MESSAGE { id: 100000009, result: {} }
+---
+
+--- 2026-04-22T20:55:58.384Z debug
+[InspectorProxyWorker] RUNTIME INCOMING MESSAGE { id: 100000010, method: 'Network.enable', result: {} }
+---

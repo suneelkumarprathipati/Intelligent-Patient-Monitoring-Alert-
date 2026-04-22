@@ -1,0 +1,29 @@
+# Matplotlib configuration for CJK support in E2B sandbox
+# This configuration ensures proper font fallback for international text rendering
+
+# Font configuration with fallback chain
+# IMPORTANT: Due to matplotlib's fallback behavior, CJK fonts must come first
+font.family         : sans-serif
+font.sans-serif     : Noto Sans CJK JP, WenQuanYi Micro Hei, WenQuanYi Zen Hei, Droid Sans Fallback, AR PL UKai CN, AR PL UMing CN, DejaVu Sans, Liberation Sans, sans-serif
+font.serif          : Noto Serif CJK JP, Noto Serif CJK HK, Noto Serif CJK KR, Noto Serif CJK SC, Noto Serif CJK TC, AR PL UKai CN, AR PL UMing CN, DejaVu Serif, Liberation Serif, serif
+font.monospace      : Noto Sans Mono CJK JP, DejaVu Sans Mono, Liberation Mono, monospace
+
+# Fix minus sign rendering with CJK fonts
+axes.unicode_minus  : False
+
+# Default font sizes
+font.size           : 10.0
+axes.titlesize      : large
+axes.labelsize      : medium
+xtick.labelsize     : medium
+ytick.labelsize     : medium
+legend.fontsize     : medium
+figure.titlesize    : large
+
+# Figure settings
+figure.dpi          : 100
+savefig.dpi         : 150
+savefig.bbox        : tight
+
+# Backend for headless environment
+backend             : Agg

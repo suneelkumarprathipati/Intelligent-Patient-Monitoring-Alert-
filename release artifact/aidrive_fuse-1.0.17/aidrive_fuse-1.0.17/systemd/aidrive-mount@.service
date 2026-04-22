@@ -1,0 +1,28 @@
+[Unit]
+Description=AI Drive FUSE Mount for %i
+After=network.target
+Requires=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStartPre=/bin/mkdir -p %i
+ExecStart=/usr/local/bin/aidrive-mount %i --foreground
+ExecStop=/bin/umount %i
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+
+# Security settings
+NoNewPrivileges=true
+ProtectHome=false
+ProtectSystem=strict
+ReadWritePaths=%i /tmp /var/log
+
+# Resource limits
+LimitNOFILE=65536
+MemoryMax=2G
+
+[Install]
+WantedBy=multi-user.target

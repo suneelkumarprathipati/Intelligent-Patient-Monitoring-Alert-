@@ -1,0 +1,10 @@
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mError: Context is not finalized. Did you forget to return a Response object or `await next()`?[0m
+
+      at null.<anonymous> (file:///home/user/webapp/dist/_worker.js:1:13497)
+      at async jsonError (file:///home/user/webapp/node_modules/wrangler/templates/middleware/middleware-miniflare3-json-error.ts:22:10)
+      at async drainBody (file:///home/user/webapp/node_modules/wrangler/templates/middleware/middleware-ensure-req-body-drained.ts:5:10)
+      at async jsonError (file:///home/user/webapp/node_modules/wrangler/templates/middleware/middleware-miniflare3-json-error.ts:22:10)
+      at async drainBody (file:///home/user/webapp/node_modules/wrangler/templates/middleware/middleware-ensure-req-body-drained.ts:5:10)
+
+
+🪵  Logs were written to "/home/user/.config/.wrangler/logs/wrangler-2026-04-22_20-55-01_294.log"
