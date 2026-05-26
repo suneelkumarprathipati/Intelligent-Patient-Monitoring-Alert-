@@ -1,0 +1,464 @@
+openapi: 3.1.0
+info:
+  # Do not change the title — it controls generated filenames
+  title: Api
+  version: 1.0.0
+  description: |
+    Intelligent Patient Monitoring & Alert System API
+    Provides real-time physiological data streaming, CRUD patient management,
+    and automated alert lifecycle endpoints.
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health check
+  - name: patients
+    description: Patient management
+  - name: vitals
+    description: Physiological sensor readings
+  - name: alerts
+    description: Automated alert management
+  - name: sensors
+    description: Sensor device registry
+  - name: dashboard
+    description: Aggregate statistics for the monitoring dashboard
+
+paths:
+  # ─── Health ──────────────────────────────────────────────────────────────────
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  # ─── Patients ────────────────────────────────────────────────────────────────
+  /patients:
+    get:
+      operationId: listPatients
+      tags: [patients]
+      summary: List all patients
+      responses:
+        "200":
+          description: Array of patients
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Patient"
+    post:
+      operationId: createPatient
+      tags: [patients]
+      summary: Admit a new patient
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PatientInput"
+      responses:
+        "201":
+          description: Created patient
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Patient"
+
+  /patients/{id}:
+    get:
+      operationId: getPatient
+      tags: [patients]
+      summary: Get a single patient record
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Patient record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Patient"
+        "404":
+          description: Not found
+    patch:
+      operationId: updatePatient
+      tags: [patients]
+      summary: Update patient information
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PatientUpdate"
+      responses:
+        "200":
+          description: Updated patient
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Patient"
+    delete:
+      operationId: deletePatient
+      tags: [patients]
+      summary: Discharge and remove a patient
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── Vitals ──────────────────────────────────────────────────────────────────
+  /patients/{id}/vitals:
+    get:
+      operationId: getLatestVitals
+      tags: [vitals]
+      summary: Get the most recent vital reading for each sensor of a patient
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Latest vitals snapshot
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/VitalReading"
+
+  /patients/{id}/vitals/history:
+    get:
+      operationId: getVitalsHistory
+      tags: [vitals]
+      summary: Get time-series vital readings for a patient (last 60 readings per sensor)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Time-series vitals array
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/VitalReading"
+
+  # ─── Alerts ──────────────────────────────────────────────────────────────────
+  /alerts:
+    get:
+      operationId: listAlerts
+      tags: [alerts]
+      summary: List all alerts (optionally filtered by status)
+      parameters:
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [active, acknowledged, resolved]
+      responses:
+        "200":
+          description: Array of alerts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Alert"
+
+  /alerts/{id}/acknowledge:
+    patch:
+      operationId: acknowledgeAlert
+      tags: [alerts]
+      summary: Acknowledge an active alert
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Updated alert
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Alert"
+
+  /alerts/{id}/resolve:
+    patch:
+      operationId: resolveAlert
+      tags: [alerts]
+      summary: Mark an alert as resolved
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Updated alert
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Alert"
+
+  # ─── Sensors ─────────────────────────────────────────────────────────────────
+  /sensors:
+    get:
+      operationId: listSensors
+      tags: [sensors]
+      summary: List all registered sensor devices
+      responses:
+        "200":
+          description: Array of sensors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Sensor"
+
+  # ─── Dashboard ───────────────────────────────────────────────────────────────
+  /dashboard/stats:
+    get:
+      operationId: getDashboardStats
+      tags: [dashboard]
+      summary: Aggregate statistics — total patients, active alerts, sensor counts, severity breakdown
+      responses:
+        "200":
+          description: Dashboard summary object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardStats"
+
+# ─── Schemas ─────────────────────────────────────────────────────────────────
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+
+    # Patient
+    Patient:
+      type: object
+      required: [id, name, age, gender, ward, bed, condition, admittedAt]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        age:
+          type: integer
+        gender:
+          type: string
+          enum: [male, female, other]
+        ward:
+          type: string
+        bed:
+          type: string
+        condition:
+          type: string
+          enum: [stable, critical, observation, discharged]
+        diagnosis:
+          type: ["string", "null"]
+        admittedAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    PatientInput:
+      type: object
+      required: [name, age, gender, ward, bed, condition]
+      properties:
+        name:
+          type: string
+          minLength: 1
+        age:
+          type: integer
+          minimum: 0
+          maximum: 150
+        gender:
+          type: string
+          enum: [male, female, other]
+        ward:
+          type: string
+        bed:
+          type: string
+        condition:
+          type: string
+          enum: [stable, critical, observation, discharged]
+        diagnosis:
+          type: string
+
+    PatientUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        age:
+          type: integer
+        gender:
+          type: string
+          enum: [male, female, other]
+        ward:
+          type: string
+        bed:
+          type: string
+        condition:
+          type: string
+          enum: [stable, critical, observation, discharged]
+        diagnosis:
+          type: string
+
+    # Vitals
+    VitalReading:
+      type: object
+      required: [id, patientId, sensorType, value, unit, status, recordedAt]
+      properties:
+        id:
+          type: integer
+        patientId:
+          type: integer
+        sensorType:
+          type: string
+          enum: [heart_rate, spo2, systolic_bp, diastolic_bp, temperature, respiration_rate]
+        value:
+          type: number
+        unit:
+          type: string
+        status:
+          type: string
+          enum: [normal, warning, critical]
+        recordedAt:
+          type: string
+          format: date-time
+
+    # Alerts
+    Alert:
+      type: object
+      required: [id, patientId, patientName, sensorType, message, severity, status, triggeredAt]
+      properties:
+        id:
+          type: integer
+        patientId:
+          type: integer
+        patientName:
+          type: string
+        sensorType:
+          type: string
+        message:
+          type: string
+        severity:
+          type: string
+          enum: [low, medium, high, critical]
+        status:
+          type: string
+          enum: [active, acknowledged, resolved]
+        triggeredAt:
+          type: string
+          format: date-time
+        acknowledgedAt:
+          type: ["string", "null"]
+          format: date-time
+        resolvedAt:
+          type: ["string", "null"]
+          format: date-time
+
+    # Sensors
+    Sensor:
+      type: object
+      required: [id, deviceId, sensorType, patientId, isActive, lastPing]
+      properties:
+        id:
+          type: integer
+        deviceId:
+          type: string
+        sensorType:
+          type: string
+          enum: [heart_rate, spo2, systolic_bp, diastolic_bp, temperature, respiration_rate]
+        patientId:
+          type: ["integer", "null"]
+        isActive:
+          type: boolean
+        lastPing:
+          type: string
+          format: date-time
+
+    # Dashboard
+    DashboardStats:
+      type: object
+      required:
+        - totalPatients
+        - criticalPatients
+        - stablePatients
+        - observationPatients
+        - activeAlerts
+        - acknowledgedAlerts
+        - totalSensors
+        - activeSensors
+        - alertsBySeverity
+      properties:
+        totalPatients:
+          type: integer
+        criticalPatients:
+          type: integer
+        stablePatients:
+          type: integer
+        observationPatients:
+          type: integer
+        activeAlerts:
+          type: integer
+        acknowledgedAlerts:
+          type: integer
+        totalSensors:
+          type: integer
+        activeSensors:
+          type: integer
+        alertsBySeverity:
+          type: object
+          properties:
+            critical:
+              type: integer
+            high:
+              type: integer
+            medium:
+              type: integer
+            low:
+              type: integer
